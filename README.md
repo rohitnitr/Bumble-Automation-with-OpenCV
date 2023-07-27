@@ -1,54 +1,66 @@
-# Bumble Face - Smile Detection and Auto Swiping Bot
+# Bumble Automation with OpenCV
 
-Bumble Face is a Python application that combines smile detection and an auto-swiping bot to automate the swiping process on the Bumble dating app. The application uses facial landmark detection to determine whether the user is smiling or not, and based on the result, it automatically likes or passes on profiles. The bot also supports superswiping when it detects a specific eye blink signal.
+Bumble Automation with OpenCV is a Python project that combines facial recognition using OpenCV and automation with the Bumble dating app. The application uses OpenCV's smile detection to determine whether the user is smiling or not and performs automated swiping actions on profiles accordingly.
 
-## How It Works
+## Table of Contents
 
-The application consists of three main components:
-1. **Smile Detection (smile.py):** This module utilizes the dlib library to detect facial landmarks in images captured from a webcam. It calculates the ratio of lips width to jaw width, and if the ratio exceeds a threshold, it determines that the user is smiling. The result is saved in a "smile_signal.txt" file.
+- [Introduction](#introduction)
+- [Requirements](#requirements)
+- [How to Use](#how-to-use)
+- [Features](#features)
+- [Contributions](#contributions)
+- [Disclaimer](#disclaimer)
 
-2. **Auto Swiping Bot (bot.py):** This component utilizes the Selenium library to control a Chrome web browser and interact with the Bumble website. The bot logs in to the Bumble app, captures webcam images, and performs actions based on the signals from the smile detection and eye blink detection modules. It supports liking profiles when a smile is detected and superswiping when a specific eye blink signal ("Right Eye Blinked") is received.
+## Introduction
 
-3. **Main Script (main.py):** The main script orchestrates the execution of smile detection and the auto-swiping bot in parallel using the `multiprocessing` module. It runs "smile.py" and "bot.py" as separate processes.
+Bumble is a popular dating app where users swipe through profiles to find potential matches. This project aims to automate the swiping process by detecting smiles in real-time using OpenCV's facial recognition capabilities. When a smile is detected, the application automatically likes the profile. Additionally, the bot supports superswiping when a specific eye blink signal is received.
 
 ## Requirements
 
-To run the Bumble Face application, ensure you have the following installed:
+To run the Bumble Automation with OpenCV project, you need the following:
 
 - Python 3.x
 - Chrome web browser
 - ChromeDriver executable (compatible with your Chrome version)
 
+Ensure that you have the necessary dependencies installed by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## How to Use
 
-1. Clone this repository to your local machine.
+Follow these steps to use the Bumble Automation with OpenCV:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/rohitnitr/Bumble-Automation-with-OpenCV.git
+```
 
 2. Download the shape predictor model file ("shape_predictor_68_face_landmarks.dat") and place it in the same directory as "smile.py" and "bot.py". You can download the model from [here](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat).
 
-3. Install the required Python dependencies by running the following command in your terminal or command prompt:
-   ```
-   pip install -r requirements.txt
-   ```
+3. Set the correct path for the ChromeDriver executable in "bot.py" under the `chromedriver_path` variable.
 
-4. Ensure that your ChromeDriver executable path is correctly set in "bot.py" under the `chromedriver_path` variable.
+4. Run the main script "main.py" to start the application:
 
-5. Run the "main.py" script to start the application. The script will run "smile.py" and "bot.py" in parallel.
+```bash
+python main.py
+```
 
-6. Before running the bot, log in to the Bumble app on the Chrome browser that the bot will control. The bot will automatically proceed after successful login.
+5. Log in to the Bumble app on the Chrome browser controlled by the bot. The bot will automatically proceed after successful login.
 
-7. The bot will detect smiles in the webcam images and automatically like profiles when a smile is detected. It will also superswipe when the eye blink signal ("Right Eye Blinked") is received.
+6. The application will detect smiles in the webcam images and automatically like profiles when a smile is detected. It will also perform superswiping when the specific eye blink signal ("Right Eye Blinked") is received.
 
-8. The bot will continue swiping until you manually interrupt the execution by pressing Ctrl+C.
+7. The bot will continue swiping until you manually interrupt the execution by pressing Ctrl+C.
 
-## Important Notes
+## Features
 
-- The smile detection module relies on accurate facial landmark detection. Make sure your webcam is correctly positioned to capture your face properly.
-
-- The application is intended for educational and demonstrative purposes only. Using automated bots on dating apps may violate the app's terms of service and lead to account suspension.
-
-- The eye blink signal ("Right Eye Blinked") is currently set to trigger superswiping. Adjust the signal detection logic in "smile.py" and "bot.py" as needed for your specific use case.
-
-- Smile detection accuracy can vary based on lighting conditions and facial expressions. Consider fine-tuning the smile detection threshold in "smile.py" to suit your preferences.
+- Smile detection using OpenCV's facial recognition.
+- Automated profile swiping on Bumble based on smile detection.
+- Superswiping on specific eye blink signal ("Right Eye Blinked").
+- Parallel execution of smile detection and auto-swiping bot using `multiprocessing`.
 
 ## Contributions
 
@@ -56,6 +68,6 @@ Contributions to improve the application are welcome. If you find any issues or 
 
 ## Disclaimer
 
-This project is provided as-is without any warranties. The developer is not responsible for any misuse or consequences caused by using this application.
+This project is intended for educational and demonstrative purposes only. The use of automated bots on dating apps may violate the app's terms of service and lead to account suspension. The developer is not responsible for any misuse or consequences caused by using this application.
 
 Happy dating and coding! 😄🤖
